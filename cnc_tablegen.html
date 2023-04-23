@@ -170,20 +170,20 @@
         var strengthAbilityStatus = document.getElementById(
           "strengthAbilityStatus"
         ).value;
-        var modifier = modifierTable[strengthScore];
+        var strModifier = modifierTable[strengthScore];
         var strAverage;
         switch (strengthAbilityStatus) {
           case "prime":
-            strAverage = 12 - modifier;
+            strAverage = 12 - strModifier;
             break;
           case "semiPrime":
-            strAverage = 15 - modifier;
+            strAverage = 15 - strModifier;
             break;
           case "nonPrime":
-            strAverage = 18 - modifier;
+            strAverage = 18 - strModifier;
             break;
           default:
-            strAverage = 15 - modifier;
+            strAverage = 15 - strModifier;
         }
         var dexterityScore = parseInt(
           document.getElementById("dexterity").value
@@ -191,20 +191,20 @@
         var dexterityAbilityStatus = document.getElementById(
           "dexterityAbilityStatus"
         ).value;
-        var modifier = modifierTable[dexterityScore];
+        var dexModifier = modifierTable[dexterityScore];
         var dexAverage;
         switch (dexterityAbilityStatus) {
           case "prime":
-            dexAverage = 12 - modifier;
+            dexAverage = 12 - dexModifier;
             break;
           case "semiPrime":
-            dexAverage = 15 - modifier;
+            dexAverage = 15 - dexModifier;
             break;
           case "nonPrime":
-            dexAverage = 18 - modifier;
+            dexAverage = 18 - dexModifier;
             break;
           default:
-            dexAverage = 15 - modifier;
+            dexAverage = 15 - dexModifier;
         }
         var constitutionScore = parseInt(
           document.getElementById("constitution").value
@@ -212,20 +212,20 @@
         var constitutionAbilityStatus = document.getElementById(
           "constitutionAbilityStatus"
         ).value;
-        var modifier = modifierTable[constitutionScore];
+        var conModifier = modifierTable[constitutionScore];
         var conAverage;
         switch (constitutionAbilityStatus) {
           case "prime":
-            conAverage = 12 - modifier;
+            conAverage = 12 - conModifier;
             break;
           case "semiPrime":
-            conAverage = 15 - modifier;
+            conAverage = 15 - conModifier;
             break;
           case "nonPrime":
-            conAverage = 18 - modifier;
+            conAverage = 18 - conModifier;
             break;
           default:
-            conAverage = 15 - modifier;
+            conAverage = 15 - conModifier;
         }
         var intelligenceScore = parseInt(
           document.getElementById("intelligence").value
@@ -233,65 +233,65 @@
         var intelligenceAbilityStatus = document.getElementById(
           "intelligenceAbilityStatus"
         ).value;
-        var modifier = modifierTable[intelligenceScore];
+        var intModifier = modifierTable[intelligenceScore];
         var intAverage;
         switch (intelligenceAbilityStatus) {
           case "prime":
-            intAverage = 12 - modifier;
+            intAverage = 12 - intModifier;
             break;
           case "semiPrime":
-            intAverage = 15 - modifier;
+            intAverage = 15 - intModifier;
             break;
           case "nonPrime":
-            intAverage = 18 - modifier;
+            intAverage = 18 - intModifier;
             break;
           default:
-            intAverage = 15 - modifier;
+            intAverage = 15 - intModifier;
         }
         var wisdomScore = parseInt(document.getElementById("wisdom").value);
         var wisdomAbilityStatus = document.getElementById(
           "wisdomAbilityStatus"
         ).value;
-        var modifier = modifierTable[wisdomScore];
+        var wisModifier = modifierTable[wisdomScore];
         var wisAverage;
         switch (wisdomAbilityStatus) {
           case "prime":
-            wisAverage = 12 - modifier;
+            wisAverage = 12 - wisModifier;
             break;
           case "semiPrime":
-            wisAverage = 15 - modifier;
+            wisAverage = 15 - wisModifier;
             break;
           case "nonPrime":
-            wisAverage = 18 - modifier;
+            wisAverage = 18 - wisModifier;
             break;
           default:
-            wisAverage = 15 - modifier;
+            wisAverage = 15 - wisModifier;
         }
         var charismaScore = parseInt(document.getElementById("charisma").value);
         var charismaAbilityStatus = document.getElementById(
           "charismaAbilityStatus"
         ).value;
-        var modifier = modifierTable[charismaScore];
+        var chaModifier = modifierTable[charismaScore];
         var chaAverage;
         switch (charismaAbilityStatus) {
           case "prime":
-            chaAverage = 12 - modifier;
+            chaAverage = 12 - chaModifier;
             break;
           case "semiPrime":
-            chaAverage = 15 - modifier;
+            chaAverage = 15 - chaModifier;
             break;
           case "nonPrime":
-            chaAverage = 18 - modifier;
+            chaAverage = 18 - chaModifier;
             break;
           default:
-            chaAverage = 15 - modifier;
+            chaAverage = 15 - chaModifier;
         }
 
         var table = document.getElementById("resultTable");
         table.innerHTML =
           "<thead><tr><th>Attribute</th><th>Mod</th><th>Easy</th><th>Average</th><th>Hard</th><th>Non-Prof.</th></tr></thead>" +
           "<tr><td>Strength</td><td>" +
-          modifier +
+          strModifier +
           "</td><td>" +
           (strAverage - 3) +
           "</td><td>" +
@@ -302,7 +302,7 @@
           (strAverage + 3) +
           "</td></tr>" +
           "<tr><td>Dexterity</td><td>" +
-          modifier +
+          dexModifier +
           "</td><td>" +
           (dexAverage - 3) +
           "</td><td>" +
@@ -313,7 +313,7 @@
           (dexAverage + 3) +
           "</td></tr>" +
           "<tr><td>Constitution</td><td>" +
-          modifier +
+          conModifier +
           "</td><td>" +
           (conAverage - 3) +
           "</td><td>" +
@@ -324,7 +324,7 @@
           (conAverage + 3) +
           "</td></tr>" +
           "<tr><td>Intelligence</td><td>" +
-          modifier +
+          intModifier +
           "</td><td>" +
           (intAverage - 3) +
           "</td><td>" +
@@ -335,7 +335,7 @@
           (intAverage + 3) +
           "</td></tr>" +
           "<tr><td>Wisdom</td><td>" +
-          modifier +
+          wisModifier +
           "</td><td>" +
           (wisAverage - 3) +
           "</td><td>" +
@@ -346,7 +346,7 @@
           (wisAverage + 3) +
           "</td></tr>" +
           "<tr><td>Charisma</td><td>" +
-          modifier +
+          chaModifier +
           "</td><td>" +
           (chaAverage - 3) +
           "</td><td>" +
