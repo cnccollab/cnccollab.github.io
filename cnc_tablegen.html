@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+      integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Difficulty Table Generator</title>
+    <style>
+      #resultTable {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pure-g">
+      <div class="pure-u-1-6"><p>&nbsp;</p></div>
+      <div class="pure-u-4-6">
+        <h1>Difficulty Table Generator</h1>
+        <form class="pure-form">
+          <fieldset>
+            <legend>Strength:</legend>
+            <input
+              type="number"
+              id="strength"
+              name="strength"
+              min="1"
+              max="19"
+              value="10"
+            />
+            <select id="strengthAbilityStatus" name="strengthAbilityStatus">
+              <option value="semiPrime" selected>Semi-Prime</option>
+              <option value="prime">Prime</option>
+              <option value="nonPrime">Non-Prime</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Dexterity:</legend>
+            <input
+              type="number"
+              id="dexterity"
+              name="dexterity"
+              min="1"
+              max="19"
+              value="10"
+            />
+            <select id="dexterityAbilityStatus" name="dexterityAbilityStatus">
+              <option value="semiPrime" selected>Semi-Prime</option>
+              <option value="prime">Prime</option>
+              <option value="nonPrime">Non-Prime</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Constitution:</legend>
+            <input
+              type="number"
+              id="constitution"
+              name="constitution"
+              min="1"
+              max="19"
+              value="10"
+            />
+            <select
+              id="constitutionAbilityStatus"
+              name="constitutionAbilityStatus"
+            >
+              <option value="semiPrime" selected>Semi-Prime</option>
+              <option value="prime">Prime</option>
+              <option value="nonPrime">Non-Prime</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Intelligence:</legend>
+            <input
+              type="number"
+              id="intelligence"
+              name="intelligence"
+              min="1"
+              max="19"
+              value="10"
+            />
+            <select
+              id="intelligenceAbilityStatus"
+              name="intelligenceAbilityStatus"
+            >
+              <option value="semiPrime" selected>Semi-Prime</option>
+              <option value="prime">Prime</option>
+              <option value="nonPrime">Non-Prime</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Wisdom:</legend>
+            <input
+              type="number"
+              id="wisdom"
+              name="wisdom"
+              min="1"
+              max="19"
+              value="10"
+            />
+            <select id="wisdomAbilityStatus" name="wisdomAbilityStatus">
+              <option value="semiPrime" selected>Semi-Prime</option>
+              <option value="prime">Prime</option>
+              <option value="nonPrime">Non-Prime</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Wisdom:</legend>
+            <input
+              type="number"
+              id="charisma"
+              name="charisma"
+              min="1"
+              max="19"
+              value="10"
+            />
+            <select id="charismaAbilityStatus" name="charismaAbilityStatus">
+              <option value="semiPrime" selected>Semi-Prime</option>
+              <option value="prime">Prime</option>
+              <option value="nonPrime">Non-Prime</option>
+            </select>
+          </fieldset>
+
+          <button type="button" onclick="generateTable()">
+            Generate Table
+          </button>
+        </form>
+        <br /><br />
+        <table class="pure-table pure-table-striped" id="resultTable">
+          <tr>
+            <th>Attribute</th>
+            <th>Mod</th>
+            <th>Average</th>
+          </tr>
+        </table>
+      </div>
+      <div class="pure-u-1-6"><p>&nbsp;</p></div>
+    </div>
+
+    <script>
+      var modifierTable = {
+        1: -4,
+        2: -3,
+        3: -3,
+        4: -2,
+        5: -2,
+        6: -1,
+        7: -1,
+        8: -1,
+        9: 0,
+        10: 0,
+        11: 0,
+        12: 0,
+        13: 1,
+        14: 1,
+        15: 1,
+        16: 2,
+        17: 2,
+        18: 3,
+        19: 3,
+      };
+
+      function generateTable() {
+        var strengthScore = parseInt(document.getElementById("strength").value);
+        var strengthAbilityStatus = document.getElementById(
+          "strengthAbilityStatus"
+        ).value;
+        var modifier = modifierTable[strengthScore];
+        var strAverage;
+        switch (strengthAbilityStatus) {
+          case "prime":
+            strAverage = 12 - modifier;
+            break;
+          case "semiPrime":
+            strAverage = 15 - modifier;
+            break;
+          case "nonPrime":
+            strAverage = 18 - modifier;
+            break;
+          default:
+            strAverage = 15 - modifier;
+        }
+        var dexterityScore = parseInt(
+          document.getElementById("dexterity").value
+        );
+        var dexterityAbilityStatus = document.getElementById(
+          "dexterityAbilityStatus"
+        ).value;
+        var modifier = modifierTable[dexterityScore];
+        var dexAverage;
+        switch (dexterityAbilityStatus) {
+          case "prime":
+            dexAverage = 12 - modifier;
+            break;
+          case "semiPrime":
+            dexAverage = 15 - modifier;
+            break;
+          case "nonPrime":
+            dexAverage = 18 - modifier;
+            break;
+          default:
+            dexAverage = 15 - modifier;
+        }
+        var constitutionScore = parseInt(
+          document.getElementById("constitution").value
+        );
+        var constitutionAbilityStatus = document.getElementById(
+          "constitutionAbilityStatus"
+        ).value;
+        var modifier = modifierTable[constitutionScore];
+        var conAverage;
+        switch (constitutionAbilityStatus) {
+          case "prime":
+            conAverage = 12 - modifier;
+            break;
+          case "semiPrime":
+            conAverage = 15 - modifier;
+            break;
+          case "nonPrime":
+            conAverage = 18 - modifier;
+            break;
+          default:
+            conAverage = 15 - modifier;
+        }
+        var intelligenceScore = parseInt(
+          document.getElementById("intelligence").value
+        );
+        var intelligenceAbilityStatus = document.getElementById(
+          "intelligenceAbilityStatus"
+        ).value;
+        var modifier = modifierTable[intelligenceScore];
+        var intAverage;
+        switch (intelligenceAbilityStatus) {
+          case "prime":
+            intAverage = 12 - modifier;
+            break;
+          case "semiPrime":
+            intAverage = 15 - modifier;
+            break;
+          case "nonPrime":
+            intAverage = 18 - modifier;
+            break;
+          default:
+            intAverage = 15 - modifier;
+        }
+        var wisdomScore = parseInt(document.getElementById("wisdom").value);
+        var wisdomAbilityStatus = document.getElementById(
+          "wisdomAbilityStatus"
+        ).value;
+        var modifier = modifierTable[wisdomScore];
+        var wisAverage;
+        switch (wisdomAbilityStatus) {
+          case "prime":
+            wisAverage = 12 - modifier;
+            break;
+          case "semiPrime":
+            wisAverage = 15 - modifier;
+            break;
+          case "nonPrime":
+            wisAverage = 18 - modifier;
+            break;
+          default:
+            wisAverage = 15 - modifier;
+        }
+        var charismaScore = parseInt(document.getElementById("charisma").value);
+        var charismaAbilityStatus = document.getElementById(
+          "charismaAbilityStatus"
+        ).value;
+        var modifier = modifierTable[charismaScore];
+        var chaAverage;
+        switch (charismaAbilityStatus) {
+          case "prime":
+            chaAverage = 12 - modifier;
+            break;
+          case "semiPrime":
+            chaAverage = 15 - modifier;
+            break;
+          case "nonPrime":
+            chaAverage = 18 - modifier;
+            break;
+          default:
+            chaAverage = 15 - modifier;
+        }
+
+        var table = document.getElementById("resultTable");
+        table.innerHTML =
+          "<thead><tr><th>Attribute</th><th>Mod</th><th>Easy</th><th>Average</th><th>Hard</th><th>Non-Prof.</th></tr></thead>" +
+          "<tr><td>Strength</td><td>" +
+          modifier +
+          "</td><td>" +
+          (strAverage - 3) +
+          "</td><td>" +
+          strAverage +
+          "</td><td>" +
+          (strAverage + 3) +
+          "</td><td>" +
+          (strAverage + 3) +
+          "</td></tr>" +
+          "<tr><td>Dexterity</td><td>" +
+          modifier +
+          "</td><td>" +
+          (dexAverage - 3) +
+          "</td><td>" +
+          dexAverage +
+          "</td><td>" +
+          (dexAverage + 3) +
+          "</td><td>" +
+          (dexAverage + 3) +
+          "</td></tr>" +
+          "<tr><td>Constitution</td><td>" +
+          modifier +
+          "</td><td>" +
+          (conAverage - 3) +
+          "</td><td>" +
+          conAverage +
+          "</td><td>" +
+          (conAverage + 3) +
+          "</td><td>" +
+          (conAverage + 3) +
+          "</td></tr>" +
+          "<tr><td>Intelligence</td><td>" +
+          modifier +
+          "</td><td>" +
+          (intAverage - 3) +
+          "</td><td>" +
+          intAverage +
+          "</td><td>" +
+          (intAverage + 3) +
+          "</td><td>" +
+          (intAverage + 3) +
+          "</td></tr>" +
+          "<tr><td>Wisdom</td><td>" +
+          modifier +
+          "</td><td>" +
+          (wisAverage - 3) +
+          "</td><td>" +
+          wisAverage +
+          "</td><td>" +
+          (wisAverage + 3) +
+          "</td><td>" +
+          (wisAverage + 3) +
+          "</td></tr>" +
+          "<tr><td>Charisma</td><td>" +
+          modifier +
+          "</td><td>" +
+          (chaAverage - 3) +
+          "</td><td>" +
+          chaAverage +
+          "</td><td>" +
+          (chaAverage + 3) +
+          "</td><td>" +
+          (chaAverage + 3) +
+          "</td></tr>";
+        table.style.display = "table";
+      }
+    </script>
+  </body>
+</html>
