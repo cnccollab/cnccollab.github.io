@@ -177,6 +177,18 @@
         return baseCB;
       }
 
+      function calculateNonProf(status) {
+        var baseCB;
+        switch (status) {
+          case "P":
+            baseCB = 18;
+            break;
+          default:
+            baseCB = "&mdash;";
+        }
+        return baseCB;
+      }
+
       function generateTable() {
         var strengthScore = parseInt(document.getElementById("strength").value);
         var strengthStatus = document.getElementById("strengthAbilityStatus").value;
@@ -184,6 +196,7 @@
         var strAverage = calculateBaseCB(strModifier, strengthStatus);
         var strEasy = strAverage - 3;
         var strHard = strAverage + 3;
+        var strNonProf = calculateNonProf(strengthStatus);
 
         var dexterityScore = parseInt(document.getElementById("dexterity").value);
         var dexterityStatus = document.getElementById("dexterityAbilityStatus").value;
@@ -191,6 +204,8 @@
         var dexAverage = calculateBaseCB(dexModifier, dexterityStatus);
         var dexEasy = dexAverage - 3;
         var dexHard = dexAverage + 3;
+        var dexNonProf = calculateNonProf(dexterityStatus);
+
 
         var constitutionScore = parseInt(document.getElementById("constitution").value);
         var constitutionStatus = document.getElementById("constitutionAbilityStatus").value;
@@ -198,6 +213,7 @@
         var conAverage = calculateBaseCB(conModifier, constitutionStatus);
         var conEasy = conAverage - 3;
         var conHard = conAverage + 3;
+        var conNonProf = calculateNonProf(constitutionStatus);
 
         var intelligenceScore = parseInt(document.getElementById("intelligence").value);
         var intelligenceStatus = document.getElementById("intelligenceAbilityStatus").value;
@@ -205,6 +221,7 @@
         var intAverage = calculateBaseCB(intModifier, intelligenceStatus);
         var intEasy = intAverage - 3;
         var intHard = intAverage + 3;
+        var intNonProf = calculateNonProf(intelligenceStatus);
 
         var wisdomScore = parseInt(document.getElementById("wisdom").value);
         var wisdomStatus = document.getElementById("wisdomAbilityStatus").value;
@@ -212,6 +229,7 @@
         var wisAverage = calculateBaseCB(wisModifier, wisdomStatus);
         var wisEasy = wisAverage - 3;
         var wisHard = wisAverage + 3;
+        var wisNonProf = calculateNonProf(wisdomStatus);
 
         var charismaScore = parseInt(document.getElementById("charisma").value);
         var charismaStatus = document.getElementById("charismaAbilityStatus").value;
@@ -219,6 +237,7 @@
         var chaAverage = calculateBaseCB(chaModifier, charismaStatus);
         var chaEasy = chaAverage - 3;
         var chaHard = chaAverage + 3;
+        var chaNonProf = calculateNonProf(charismaStatus);
 
         var nonProf = 18;
 
@@ -227,22 +246,22 @@
           "<thead><tr><th>Attribute</th><th>Mod</th><th>Easy</th><th>Average</th><th>Hard</th><th>Non-Prof.</th></tr></thead>" +
 
           "<tr><td>Strength ("+ strengthStatus +")</td><td>" + strModifier + "</td><td>" + strEasy + "</td><td>" +
-          strAverage + "</td><td>" + strHard + "</td><td>" + nonProf + "</td></tr>" +
+          strAverage + "</td><td>" + strHard + "</td><td>" + strNonProf + "</td></tr>" +
 
           "<tr><td>Dexterity ("+ dexterityStatus +")</td><td>" + dexModifier + "</td><td>" + dexEasy + "</td><td>" +
-          dexAverage + "</td><td>" + dexHard + "</td><td>" + nonProf + "</td></tr>" +
+          dexAverage + "</td><td>" + dexHard + "</td><td>" + dexNonProf + "</td></tr>" +
 
           "<tr><td>Constitution ("+ constitutionStatus +")</td><td>" + conModifier + "</td><td>" + conEasy + "</td><td>" +
-          conAverage + "</td><td>" + conHard + "</td><td>" + nonProf + "</td></tr>" +
+          conAverage + "</td><td>" + conHard + "</td><td>" + conNonProf + "</td></tr>" +
 
           "<tr><td>Intelligence ("+ intelligenceStatus +")</td><td>" + intModifier + "</td><td>" + intEasy + "</td><td>" +
-          intAverage + "</td><td>" + intHard + "</td><td>" + nonProf + "</td></tr>" +
+          intAverage + "</td><td>" + intHard + "</td><td>" + intNonProf + "</td></tr>" +
 
           "<tr><td>Wisdom ("+ wisdomStatus +")</td><td>" + wisModifier + "</td><td>" + wisEasy + "</td><td>" +
-          wisAverage + "</td><td>" + wisHard + "</td><td>" + nonProf + "</td></tr>" +
+          wisAverage + "</td><td>" + wisHard + "</td><td>" + wisNonProf + "</td></tr>" +
 
           "<tr><td>Charisma ("+ charismaStatus +")</td><td>" + chaModifier + "</td><td>" + chaEasy + "</td><td>" +
-          chaAverage + "</td><td>" + chaHard + "</td><td>" + nonProf + "</td></tr>";
+          chaAverage + "</td><td>" + chaHard + "</td><td>" + chaNonProf + "</td></tr>";
         table.style.display = "table";
       }
     </script>
