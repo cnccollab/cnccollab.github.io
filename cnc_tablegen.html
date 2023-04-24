@@ -177,11 +177,11 @@
         return baseCB;
       }
 
-      function calculateNonProf(status) {
+      function calculateNonProf(modifier, status) {
         var baseCB;
         switch (status) {
           case "P":
-            baseCB = 18;
+            baseCB = 18 - modifier;
             break;
           default:
             baseCB = "&mdash;";
@@ -196,7 +196,7 @@
         var strAverage = calculateBaseCB(strModifier, strengthStatus);
         var strEasy = strAverage - 3;
         var strHard = strAverage + 3;
-        var strNonProf = calculateNonProf(strengthStatus);
+        var strNonProf = calculateNonProf(strModifier, strengthStatus);
 
         var dexterityScore = parseInt(document.getElementById("dexterity").value);
         var dexterityStatus = document.getElementById("dexterityAbilityStatus").value;
@@ -204,7 +204,7 @@
         var dexAverage = calculateBaseCB(dexModifier, dexterityStatus);
         var dexEasy = dexAverage - 3;
         var dexHard = dexAverage + 3;
-        var dexNonProf = calculateNonProf(dexterityStatus);
+        var dexNonProf = calculateNonProf(dexModifier, dexterityStatus);
 
 
         var constitutionScore = parseInt(document.getElementById("constitution").value);
@@ -213,7 +213,7 @@
         var conAverage = calculateBaseCB(conModifier, constitutionStatus);
         var conEasy = conAverage - 3;
         var conHard = conAverage + 3;
-        var conNonProf = calculateNonProf(constitutionStatus);
+        var conNonProf = calculateNonProf(conModifier, constitutionStatus);
 
         var intelligenceScore = parseInt(document.getElementById("intelligence").value);
         var intelligenceStatus = document.getElementById("intelligenceAbilityStatus").value;
@@ -221,7 +221,7 @@
         var intAverage = calculateBaseCB(intModifier, intelligenceStatus);
         var intEasy = intAverage - 3;
         var intHard = intAverage + 3;
-        var intNonProf = calculateNonProf(intelligenceStatus);
+        var intNonProf = calculateNonProf(intModifier, intelligenceStatus);
 
         var wisdomScore = parseInt(document.getElementById("wisdom").value);
         var wisdomStatus = document.getElementById("wisdomAbilityStatus").value;
@@ -229,7 +229,7 @@
         var wisAverage = calculateBaseCB(wisModifier, wisdomStatus);
         var wisEasy = wisAverage - 3;
         var wisHard = wisAverage + 3;
-        var wisNonProf = calculateNonProf(wisdomStatus);
+        var wisNonProf = calculateNonProf(wisModifier, wisdomStatus);
 
         var charismaScore = parseInt(document.getElementById("charisma").value);
         var charismaStatus = document.getElementById("charismaAbilityStatus").value;
@@ -237,9 +237,7 @@
         var chaAverage = calculateBaseCB(chaModifier, charismaStatus);
         var chaEasy = chaAverage - 3;
         var chaHard = chaAverage + 3;
-        var chaNonProf = calculateNonProf(charismaStatus);
-
-        var nonProf = 18;
+        var chaNonProf = calculateNonProf(chaModifier, charismaStatus);
 
         var table = document.getElementById("resultTable");
         table.innerHTML =
