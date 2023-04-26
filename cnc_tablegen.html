@@ -1,141 +1,110 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-      integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="css/pico.classless.min.css">
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Difficulty Table Generator</title>
     <style>
+      :root {
+      --primary: #1e88e5;
+      }
+      strong {
+        font-size: 1.25rem;
+        font-family: "Menlo", "Consolas", "Roboto Mono", monospace;
+      }
+      input.compact {
+        width: 100px;
+      }
+      select.compact {
+        width: 200px;
+      }
       #resultTable {
         display: none;
       }
     </style>
   </head>
   <body>
-    <div class="pure-g">
-      <div class="pure-u-1-12 pure-u-md-1-12"><p>&nbsp;</p></div>
-      <div class="pure-u-10-12 pure-u-md-10-12">
-        <h1>Difficulty Table Generator</h1>
-        <form class="pure-form">
-          <fieldset>
-            <legend>Strength:</legend>
-            <input
-              type="number"
-              id="strength"
-              name="strength"
-              min="1"
-              max="19"
-              value="10"
-            />
-            <select id="strengthAbilityStatus" name="strengthAbilityStatus">
+    <main>
+      <form>
+        <div class="grid">
+          <label for="strength">
+            <strong>STR</strong>
+            <input class="compact" type="number" id="strength" name="strength" min="1" max="19" value="10"/>
+            <select class="compact" id="strengthAbilityStatus" name="strengthAbilityStatus">
               <option value="S-P" selected>Semi-Prime</option>
               <option value="P">Prime</option>
               <option value="N-P">Non-Prime</option>
             </select>
-          </fieldset>
-          <fieldset>
-            <legend>Dexterity:</legend>
-            <input
-              type="number"
-              id="dexterity"
-              name="dexterity"
-              min="1"
-              max="19"
-              value="10"
-            />
-            <select id="dexterityAbilityStatus" name="dexterityAbilityStatus">
+          </label>
+        </div>
+        <div class="grid">
+          <label for="dexterity">
+            <strong>DEX</strong>
+            <input class="compact" type="number" id="dexterity" name="dexterity" min="1" max="19" value="10"/>
+            <select class="compact" id="dexterityAbilityStatus" name="dexterityAbilityStatus">
               <option value="S-P" selected>Semi-Prime</option>
               <option value="P">Prime</option>
               <option value="N-P">Non-Prime</option>
             </select>
-          </fieldset>
-          <fieldset>
-            <legend>Constitution:</legend>
-            <input
-              type="number"
-              id="constitution"
-              name="constitution"
-              min="1"
-              max="19"
-              value="10"
-            />
-            <select id="constitutionAbilityStatus" name="constitutionAbilityStatus">
+          </label>
+        </div>
+        <div class="grid">
+          <label for="constitution">
+            <strong>CON</strong>
+            <input class="compact" type="number" id="constitution" name="constitution" min="1" max="19" value="10"/>
+            <select class="compact" id="constitutionAbilityStatus" name="constitutionAbilityStatus">
               <option value="S-P" selected>Semi-Prime</option>
               <option value="P">Prime</option>
               <option value="N-P">Non-Prime</option>
             </select>
-          </fieldset>
-          <fieldset>
-            <legend>Intelligence:</legend>
-            <input
-              type="number"
-              id="intelligence"
-              name="intelligence"
-              min="1"
-              max="19"
-              value="10"
-            />
-            <select id="intelligenceAbilityStatus" name="intelligenceAbilityStatus">
+          </label>
+        </div>
+        <div class="grid">
+          <label for="intelligence">
+            <strong>INT</strong>
+            <input class="compact" type="number" id="intelligence" name="intelligence" min="1" max="19" value="10"/>
+            <select class="compact" id="intelligenceAbilityStatus" name="intelligenceAbilityStatus">
               <option value="S-P" selected>Semi-Prime</option>
               <option value="P">Prime</option>
               <option value="N-P">Non-Prime</option>
             </select>
-          </fieldset>
-          <fieldset>
-            <legend>Wisdom:</legend>
-            <input
-              type="number"
-              id="wisdom"
-              name="wisdom"
-              min="1"
-              max="19"
-              value="10"
-            />
-            <select id="wisdomAbilityStatus" name="wisdomAbilityStatus">
+          </label>
+        </div>
+        <div class="grid">
+          <label for="wisdom">
+            <strong>WIS</strong>
+            <input class="compact" type="number" id="wisdom" name="wisdom" min="1" max="19" value="10"/>
+            <select class="compact" id="wisdomAbilityStatus" name="wisdomAbilityStatus">
               <option value="S-P" selected>Semi-Prime</option>
               <option value="P">Prime</option>
               <option value="N-P">Non-Prime</option>
             </select>
-          </fieldset>
-          <fieldset>
-            <legend>Charisma:</legend>
-            <input
-              type="number"
-              id="charisma"
-              name="charisma"
-              min="1"
-              max="19"
-              value="10"
-            />
-            <select id="charismaAbilityStatus" name="charismaAbilityStatus">
+          </label>
+        </div>
+        <div class="grid">
+          <label for="charisma">
+            <strong>CHA</strong>
+            <input class="compact" type="number" id="charisma" name="charisma" min="1" max="19" value="10"/>
+            <select class="compact" id="charismaAbilityStatus" name="charismaAbilityStatus">
               <option value="S-P" selected>Semi-Prime</option>
               <option value="P">Prime</option>
               <option value="N-P">Non-Prime</option>
             </select>
-          </fieldset>
-
-          <button type="button" onclick="generateTable()">
-            Generate Table
-          </button>
+          </label>
+        </div>
+        <button type="button" onclick="generateTable()">
+          Generate Table
+        </button>
         </form>
         <br /><br />
-        <table class="pure-table pure-table-striped" id="resultTable">
+        <table id="resultTable" role="grid">
           <tr>
             <th>Attribute</th>
             <th>Mod</th>
             <th>Average</th>
           </tr>
         </table>
-      </div>
-      <div class="pure-u-1-12 pure-u-md-1-12"><p>&nbsp;</p></div>
-    </div>
-
+  </main>
     <script>
       var modifierTable = {
         1: -4,
